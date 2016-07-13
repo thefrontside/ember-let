@@ -1,0 +1,25 @@
+<h2>ember-let dummy app</h2>
+
+<h3>Bind basic values</h3>
+<ul class="basic">
+  {{#let "abc" "123" as |first second|}}
+    <li>{{first}}</li>
+    <li>{{second}}</li>
+  {{/let}}
+</ul>
+
+<h3>Bind a hash and a standalone value</h3>
+<ul class="with-hash">
+  {{#let (hash first="first" second="second") "third" as |hash standalone|}}
+    <li>{{hash.first}}</li>
+    <li>{{hash.second}}</li>
+    <li>{{standalone}}</li>
+  {{/let}}
+</ul>
+
+<h3>Bind an object returned from a helper</h3>
+<div class="with-helper-object">
+  {{#let (boolean) as |bool|}}
+      {{bool.value}} - <button onClick={{action bool.toggle}}>toggle</button>
+  {{/let}}
+</div>
