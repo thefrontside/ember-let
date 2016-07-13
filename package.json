@@ -1,7 +1,7 @@
 {
   "name": "ember-let",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "A helper for binding values to HTMLBars template contexts",
   "directories": {
     "doc": "doc",
     "test": "tests"
