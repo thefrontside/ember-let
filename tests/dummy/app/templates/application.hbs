@@ -27,8 +27,8 @@
 <h3>Bind undefined, null, and []</h3>
 <ul class="missing-values">
   {{#let falseyValues.undef falseyValues.nullThing falseyValues.empty as |undef nullThing empty|}}
-    <li>{{isUndefined undef}}</li>
-    <li>{{isNull nullThing}}</li>
-    <li>{{isEmptyArray empty}}</li>
+    <li>{{is-undefined undef}}</li>
+    <li>{{is-null nullThing}}</li>
+    <li>{{is-empty-array empty}}</li>
   {{/let}}
 </ul>
