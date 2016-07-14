@@ -23,3 +23,12 @@
       <span id="bool-value">{{bool.value}}</span> - <button id="toggle-bool" onClick={{action bool.toggle}}>toggle</button>
   {{/let}}
 </div>
+
+<h3>Bind undefined, null, and []</h3>
+<ul class="missing-values">
+  {{#let falseyValues.undef falseyValues.nullThing falseyValues.empty as |undef nullThing empty|}}
+    <li>{{isUndefined undef}}</li>
+    <li>{{isNull nullThing}}</li>
+    <li>{{isEmptyArray empty}}</li>
+  {{/let}}
+</ul>
