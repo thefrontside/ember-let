@@ -20,6 +20,6 @@
 <h3>Bind an object returned from a helper</h3>
 <div class="with-helper-object">
   {{#let (boolean) as |bool|}}
-      {{bool.value}} - <button onClick={{action bool.toggle}}>toggle</button>
+      <span id="bool-value">{{bool.value}}</span> - <button id="toggle-bool" onClick={{action bool.toggle}}>toggle</button>
   {{/let}}
 </div>
