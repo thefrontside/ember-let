@@ -1,50 +1,62 @@
-import { test } from 'qunit';
-import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
+/* jshint expr:true */
+import {
+  describe,
+  it,
+  beforeEach,
+  afterEach
+} from 'mocha';
+import { expect } from 'chai';
+import startApp from '../helpers/start-app';
+import destroyApp from '../helpers/destroy-app';
 
-moduleForAcceptance('Acceptance | let helper');
+describe('Acceptance: let helper', function() {
+  let application;
 
-test('let binds basic values', function(assert) {
-  visit('/');
-
-  andThen(() => {
-    assert.equal(find('ul.basic li:first').text(), 'abc');
-    assert.equal(find('ul.basic li:last').text(), '123');
+  beforeEach(function() {
+    application = startApp();
+    visit('/');
   });
-});
 
-test('let binds nested values', function(assert) {
-  visit('/');
+  afterEach(function() {
+    destroyApp(application);
+  });
 
-  andThen(() => {
-    let expected = ['first', 'second', 'third'];
-    find('ul.with-hash li').each((i, v) => {
-      assert.equal($(v).text(), expected[i], `should equal ${expected[i]}`);
+  it('binds basic values', () => {
+    andThen(() => {
+      expect(find('ul.basic li:first').text()).to.equal('abc');
+      expect(find('ul.basic li:last').text()).to.equal('123');
+    });
+  });
+
+  it('binds nested values', () => {
+    andThen(() => {
+      let expected = ['first', 'second', 'third'];
+
+      find('ul.with-hash li').each((i, v) => {
+        expect($(v).text()).to.equal(expected[i]);
+      });
+    });
+  });
+
+  it('binds class instances', () => {
+    andThen(() => {
+      expect(find('.with-helper-object #bool-value').text()).to.equal('false');
+    });
+
+    click('button#toggle-bool');
+
+    andThen(() => {
+      expect(find('.with-helper-object #bool-value').text()).to.equal('true');
+    });
+  });
+
+  it('will yield its block even when the value is falsey', () => {
+    let expected = ['this is undefined', 'this is null', 'this is an empty array'];
+
+    andThen(() => {
+      find('.missing-values li').each((i, v) => {
+        expect($(v).text()).to.equal(expected[i]);
+      });
     });
   });
 });
-
-test('let binds class instances', function(assert) {
-  visit('/');
-
-  andThen(() => {
-    assert.equal(find('.with-helper-object #bool-value').text(), 'false', 'bool.value should start as false');
-  });
-
-  click('button#toggle-bool');
-
-  andThen(() => {
-    assert.equal(find('.with-helper-object #bool-value').text(), 'true', 'bool.value should be false after the toggle method is called');
-  });
-});
-
-test('let will yield its block even when the value is undefined/null/[]', function(assert) {
-  visit('/');
-
-  let expected = ['this is undefined', 'this is null', 'this is an empty array'];
-
-  andThen(() => {
-    find('.missing-values li').each((i, v) => {
-      assert.equal($(v).text(), expected[i], "should bind the variables even if they're falsey values");
-    })
-  })
-})
