@@ -1,6 +1,32 @@
-# Ember-let
+# ember-let (WIP)
 
-This README outlines the details of collaborating on this Ember addon.
+`ember-let` is an addon for binding variables to template contexts in Ember. It behaves much like the `with` helper, but lets you bind an arbitrary number of variables, including standalone values, hashes, and class instances. However, unlike `with`, the `let` helper will yield its block even if the bound values are `undefined`, `null`, or `[]`. This has the benefit of allowing the user to treat the block values as true variable bindings rather than simply aliases to existing values.
+
+See examples below:
+
+**Bind basic values**
+```hbs
+{{#let "abc" "123" as |first second|}}
+  <li>{{first}}</li>
+  <li>{{second}}</li>
+{{/let}}
+```
+
+**Mix hashes and standalone values**
+```hbs
+{{#let (hash first="first" second="second") "third" as |hash standalone|}}
+  <li>{{hash.first}}</li>
+  <li>{{hash.second}}</li>
+  <li>{{standalone}}</li>
+{{/let}}
+```
+
+**Bind a class instance returned from a helper**
+```hbs
+{{#let (boolean) as |bool|}}
+  {{bool.value}} - <button onClick={{action bool.toggle}}>toggle</button>
+{{/let}}
+```
 
 ## Installation
 
