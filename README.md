@@ -1,5 +1,10 @@
 # ember-let (WIP)
 
+[![npm version](https://badge.fury.io/js/ember-let.svg)](https://badge.fury.io/js/ember-let)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-let.svg)](https://emberobserver.com/addons/ember-let)
+[![Build Status](https://travis-ci.org/thefrontside/ember-let.svg?branch=master)](https://travis-ci.org/thefrontside/ember-let)
+
+
 `ember-let` is an addon for binding variables to template contexts in Ember. It behaves much like the `with` helper, but lets you bind an arbitrary number of variables, including standalone values, hashes, and class instances. However, unlike `with`, the `let` helper will yield its block even if the bound values are `undefined`, `null`, or `[]`. This has the benefit of allowing the user to treat the block values as true variable bindings rather than simply aliases to existing values.
 
 See examples below:
@@ -50,3 +55,9 @@ See examples below:
 * `ember build`
 
 For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+
+## Code of Conduct
+Please note that this project is released with a Contributor Code of
+Conduct. By participating in this project you agree to abide by its
+terms, which can be found in the `CODE_OF_CONDUCT.md` file in this
+repository.
