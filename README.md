@@ -1,4 +1,4 @@
-# ember-let (WIP)
+# ember-let
 
 [![npm version](https://badge.fury.io/js/ember-let.svg)](https://badge.fury.io/js/ember-let)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-let.svg)](https://emberobserver.com/addons/ember-let)
