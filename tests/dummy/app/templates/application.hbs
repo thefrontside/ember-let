@@ -49,3 +49,16 @@
     <li>num = {{num}}</li>
   </ul>
 </div>
+
+<h3>Inline `let` hoists to outmost scope</h3>
+<div class="inline-hoisting">
+  <ul>
+    <li>{{zero}}</li>      
+  {{#with (array 1 2 3) as |numbers|}}
+    {{let zero 0}}
+    {{#each numbers as |num|}}
+      <li>{{num}}</li>
+    {{/each}}
+  {{/with}}
+  </ul>
+</div>
