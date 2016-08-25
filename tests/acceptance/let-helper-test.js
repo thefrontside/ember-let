@@ -38,7 +38,7 @@ describe('Acceptance: let helper', function() {
 
   describe('binding css classes', ()=> {
     it('starts out with one value', ()=> {
-      expect(find('.with-helper-object #bool-value').text()).to.equal('false');
+      expect(find('#bool-value').text()).to.equal('false');
     });
 
     describe('toggling the boolean', function() {
@@ -47,7 +47,7 @@ describe('Acceptance: let helper', function() {
       });
 
       it('changes the value', function() {
-        expect(find('.with-helper-object #bool-value').text()).to.equal('true');
+        expect(find('#bool-value').text()).to.equal('true');
       });
     });
   });
