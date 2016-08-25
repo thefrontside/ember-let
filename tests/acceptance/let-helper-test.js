@@ -64,6 +64,7 @@ describe('Acceptance: let helper', function() {
 
   if (emberVersionIs('greaterThan', "2.0.0")) {
     describe('inline', () => {
+
       it('works', () => {
         andThen(() => {
           expect(find('.inline-use').text()).to.equal("hello ");
@@ -75,7 +76,25 @@ describe('Acceptance: let helper', function() {
           expect(find('.inline-use').text()).to.equal("hello world");
         });
       });
-    });    
+
+      it('respects scoping rules', () => {
+        andThen(() => {
+
+          let result = find('.inline-scoping li').map(function() {
+            return $(this).text().trim();
+          }).toArray();
+          
+          expect(result).to.deep.equal([
+            'num = 0',
+            'num = 1',
+            'num = 2',
+            'num = 3',
+            'num = 0'
+          ]);
+        });
+      });
+
+    });
   }
 
 });

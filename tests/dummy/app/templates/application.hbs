@@ -38,3 +38,14 @@
 <div class="inline-use">{{greeting}}</div>
 <button {{action (action (mut to) "world")}}>Greet the world!</button>  
 
+<h3>Inline `let` respects scoping rules</h3>
+<div class="inline-scoping">
+  {{let num 0}}
+  <ul>
+    <li>num = {{num}}</li>
+    {{#each (array 1 2 3) as |num|}}
+      <li>num = {{num}}</li>
+    {{/each}}
+    <li>num = {{num}}</li>
+  </ul>
+</div>
