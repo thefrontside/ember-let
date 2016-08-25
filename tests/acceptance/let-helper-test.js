@@ -9,6 +9,8 @@ import { expect } from 'chai';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
 
+import emberVersionIs from 'ember-version-is';
+
 describe('Acceptance: let helper', function() {
   let application;
 
@@ -60,17 +62,20 @@ describe('Acceptance: let helper', function() {
     });
   });
 
-  describe('inline', () => {
-    it('works', () => {
-      andThen(() => {
-        expect(find('.inline-use').text()).to.equal("hello ");
-      });
+  if (emberVersionIs('greaterThan', "2.0.0")) {
+    describe('inline', () => {
+      it('works', () => {
+        andThen(() => {
+          expect(find('.inline-use').text()).to.equal("hello ");
+        });
 
-      click('button:contains(Greet the world)');
+        click('button:contains(Greet the world)');
 
-      andThen(() => {
-        expect(find('.inline-use').text()).to.equal("hello world");
+        andThen(() => {
+          expect(find('.inline-use').text()).to.equal("hello world");
+        });
       });
-    });
-  });
+    });    
+  }
+
 });

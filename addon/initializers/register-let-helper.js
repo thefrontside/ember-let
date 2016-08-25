@@ -12,7 +12,7 @@ export default {
       }
 
       // when used inline
-      if (this.params.length === 2) {
+      if (this.params && this.params.length === 2) {
         let [stream] = this.params;
         let [,value] = params;
 
@@ -20,6 +20,7 @@ export default {
           stream.setValue(value);
         }
       }
+
     });
   }
 };
