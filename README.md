@@ -33,6 +33,12 @@ See examples below:
 {{/let}}
 ```
 
+**Inline use**
+```hbs
+{{let greeting (concat "hello " to)}}
+{{greeting}} - <button {{action (action (mut to) "world")}}>Greet the world!</button>  
+```
+
 ## Installation
 
 * `git clone` this repository
