@@ -6,18 +6,21 @@ export default {
   initialize: function registerLetHelper() {
     registerHelper('let', function letHelper(params, hash, options) {
 
+      let isBlock = !!options.template.yield;
       // when used as a block
-      if (options.template.yield) {
+      if (isBlock) {
         options.template.yield(params);
       }
 
       // when used inline
-      if (this.params && this.params.length === 2) {
-        let [stream] = this.params;
-        let [,value] = params;
-
-        if (stream && stream.path) {
-          stream.setValue(value);
+      if (!isBlock && this.params && this.params.length) {
+        let stream;
+        for (let i = 0; i < this.params.length; i++) {
+          if (i % 2) {
+            stream.setValue(params[i]);            
+          } else {
+            stream = this.params[i];            
+          }
         }
       }
 

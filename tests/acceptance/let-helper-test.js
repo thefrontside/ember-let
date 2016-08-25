@@ -105,11 +105,25 @@ describe('Acceptance: let helper', function() {
             '0',
             '1',
             '2',
-            '3'
+            '3',
+            '0'
           ]);
         });
       });
 
+      it('supports multipe binding', function(){
+        andThen(() => {
+          expect($('.inline-multiple-binding .result').text()).to.equal('ember-let ');
+        });
+      
+        click('button:contains(Show Addon Description)');
+
+        andThen(() => {
+          expect($('.inline-multiple-binding .result').text()).to.equal('ember-let variable declaration inspired by LISP');
+        });
+      });
+
+      
     });
   }
 
