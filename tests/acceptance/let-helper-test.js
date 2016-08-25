@@ -59,4 +59,18 @@ describe('Acceptance: let helper', function() {
       });
     });
   });
+
+  describe('inline', () => {
+    it('works', () => {
+      andThen(() => {
+        expect(find('.inline-use').text()).to.equal("hello ");
+      });
+
+      click('button:contains(Greet the world)');
+
+      andThen(() => {
+        expect(find('.inline-use').text()).to.equal("hello world");
+      });
+    });
+  });
 });

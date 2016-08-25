@@ -32,3 +32,9 @@
     <li>{{is-empty-array empty}}</li>
   {{/let}}
 </ul>
+
+<h3>Inline use</h3>
+{{let greeting (concat "hello " to)}}
+<div class="inline-use">{{greeting}}</div>
+<button {{action (action (mut to) "world")}}>Greet the world!</button>  
+
