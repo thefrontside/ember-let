@@ -34,6 +34,8 @@ See examples below:
 ```
 
 **Inline use**
+Note: requires Ember 2.0+ (ie. does not support 1.13)
+
 ```hbs
 {{let greeting (concat "hello " to)}}
 {{greeting}} - <button {{action (action (mut to) "world")}}>Greet the world!</button>  
