@@ -5,6 +5,7 @@ import {
   it
 } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
+import emberVersionIs from 'ember-version-is';
 
 import LetHelperInitializer from 'ember-let/initializers/register-let-helper';
 
@@ -14,7 +15,11 @@ describeComponent('let', 'Integration: let helper', {
   integration: true 
 },
   function() {
-    
+
+    if (emberVersionIs('lessThan', "2.0.0")) {
+      return ;
+    }
+
     it('throws an error when path and value are not specified', function() {
       let render = () => this.render(hbs`{{let}}`);
       expect(render).to.throw(/let helper requires at least one path and one value/);
@@ -24,5 +29,6 @@ describeComponent('let', 'Integration: let helper', {
       let render = () => this.render(hbs`{{let "bad" path}}`);
       expect(render).to.throw(/let helper expects path to be quoteless - got bad instead/);
     });
+
   }
 );
