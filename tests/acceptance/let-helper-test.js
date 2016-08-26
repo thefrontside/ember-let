@@ -23,12 +23,12 @@ describe('Acceptance: let helper', function() {
     destroyApp(application);
   });
 
-  it('binds basic values', () => {
+  it('binds basic values', function()  {
     expect(find('ul.basic li:first').text()).to.equal('abc');
     expect(find('ul.basic li:last').text()).to.equal('123');
   });
 
-  it('binds nested values', () => {
+  it('binds nested values', function() {
     let expected = ['first', 'second', 'third'];
 
     find('ul.with-hash li').each((i, v) => {
@@ -52,7 +52,7 @@ describe('Acceptance: let helper', function() {
     });
   });
 
-  it('will yield its block even when the value is falsey', () => {
+  it('will yield its block even when the value is falsey', function() {
     let expected = ['this is undefined', 'this is null', 'this is an empty array'];
 
     find('.missing-values li').each((i, v) => {
@@ -60,67 +60,68 @@ describe('Acceptance: let helper', function() {
     });
   });
 
-  if (emberVersionIs('greaterThan', "2.0.0")) {
-    describe('inline', () => {
+  if (emberVersionIs('greaterThan', '2.0.0')) {
+    describe('inline usage', function() {
 
-      it('works', () => {
-        andThen(() => {
-          expect(find('.inline-use').text()).to.equal("hello ");
+      it('works', function() {
+        expect(find('.inline-use').text()).to.equal('hello ');
+      });
+
+      describe('triggering a recomputation', function() {
+        beforeEach(function() {
+          click('button:contains(Greet the world)');
         });
 
-        click('button:contains(Greet the world)');
-
-        andThen(() => {
-          expect(find('.inline-use').text()).to.equal("hello world");
+        it('updates the binding', function() {
+          expect(find('.inline-use').text()).to.equal('hello world');
         });
       });
 
-      it('respects scoping rules', () => {
-        andThen(() => {
 
-          let result = find('.inline-scoping li').map(function() {
-            return $(this).text().trim();
-          }).toArray();
+         it('respects scoping rules', function() {
+        let result = find('.inline-scoping li').map(function() {
+          return $(this).text().trim();
+        }).toArray();
 
-          expect(result).to.deep.equal([
-            'num = 0',
-            'num = 1',
-            'num = 2',
-            'num = 3',
-            'num = 0'
-          ]);
-        });
+        expect(result).to.deep.equal([
+          'num = 0',
+          'num = 1',
+          'num = 2',
+          'num = 3',
+          'num = 0'
+        ]);
       });
 
-      it('scopes to outmost scope', () => {
-        andThen(() => {
+      it('scopes to outmost scope', function() {
+        let result = find('.inline-hoisting li').map(function() {
+          return $(this).text().trim();
+        }).toArray();
 
-          let result = find('.inline-hoisting li').map(function() {
-            return $(this).text().trim();
-          }).toArray();
-          
-          expect(result).to.deep.equal([
-            '0',
-            '1',
-            '2',
-            '3',
-            '0'
-          ]);
-        });
+        expect(result).to.deep.equal([
+          '0',
+          '1',
+          '2',
+          '3',
+          '0'
+        ]);
       });
 
-      it('supports multipe binding', function(){
-        andThen(() => {
+      describe('multiple binding', function(){
+        it('works', function() {
           expect($('.inline-multiple-binding .result').text()).to.equal('ember-let ');
         });
-      
-        click('button:contains(Show Addon Description)');
 
-        andThen(() => {
-          expect($('.inline-multiple-binding .result').text()).to.equal('ember-let variable declaration inspired by LISP');
+        describe('triggering a recomputation', function() {
+          beforeEach(function() {
+            click('button:contains(Show Addon Description)');
+          });
+
+          it('recomputes all bound values', function() {
+            expect($('.inline-multiple-binding .result').text()).to.equal('ember-let variable declaration inspired by LISP');
+          });
         });
       });
-      
+
     });
   }
 
