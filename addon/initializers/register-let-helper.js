@@ -18,7 +18,7 @@ export default {
       }
 
       // when used inline
-      if (!isBlock) {
+      if (!isBlock && this.params) {
         if (this.params.length < 2) {
           assert('let helper requires at least one path and one value', this.params.length > 2);
         }
