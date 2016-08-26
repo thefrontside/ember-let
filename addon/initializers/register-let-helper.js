@@ -1,5 +1,10 @@
 import Ember from 'ember';
 const { registerHelper } = Ember.__loader.require('ember-htmlbars/helpers');
+import isStream from '../-private/is-stream';
+
+const {
+  assert
+} = Ember;
 
 export default {
   name: 'register-let-helper',
@@ -13,12 +18,16 @@ export default {
       }
 
       // when used inline
-      if (!isBlock && this.params && this.params.length) {
+      if (!isBlock) {
+        if (this.params.length < 2) {
+          assert('let helper requires at least one path and one value', this.params.length > 2);
+        }
         let stream;
         for (let i = 0; i < this.params.length; i++) {
           if (i % 2) {
-            stream.setValue(params[i]);            
-          } else {
+            assert(`let helper expects path to be quoteless - got ${stream} instead`, isStream(stream));
+            stream.setValue(params[i]);
+           } else {
             stream = this.params[i];            
           }
         }

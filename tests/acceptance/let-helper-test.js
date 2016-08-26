@@ -122,7 +122,6 @@ describe('Acceptance: let helper', function() {
           expect($('.inline-multiple-binding .result').text()).to.equal('ember-let variable declaration inspired by LISP');
         });
       });
-
       
     });
   }
