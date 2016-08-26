@@ -32,3 +32,44 @@
     <li>{{is-empty-array empty}}</li>
   {{/let}}
 </ul>
+
+<h3>Inline use</h3>
+{{let greeting (concat "hello " to)}}
+<div class="inline-use">{{greeting}}</div>
+<button {{action (action (mut to) "world")}}>Greet the world!</button>  
+
+<h3>Inline `let` respects scoping rules</h3>
+<div class="inline-scoping">
+  {{let num 0}}
+  <ul>
+    <li>num = {{num}}</li>
+    {{#each (array 1 2 3) as |num|}}
+      <li>num = {{num}}</li>
+    {{/each}}
+    <li>num = {{num}}</li>
+  </ul>
+</div>
+
+<h3>Inline `let` hoists to outmost scope</h3>
+<div class="inline-hoisting">
+  <ul>
+  {{#with (array 1 2 3) as |numbers|}}
+    {{let zero 0}}
+    <li>{{zero}}</li>
+    {{#each numbers as |num|}}
+      <li>{{num}}</li>
+    {{/each}}
+  {{/with}}
+    <li>{{zero}}</li>  
+  </ul>
+</div>
+
+<h3>Inline `let` supports multipe binding</h3>
+<div class="inline-multiple-binding">
+  {{let framework "ember"
+        helper "let"
+        addon (concat framework "-" helper " " description)
+  }}
+  <span class="result">{{addon}}</span>
+  <button {{action (action (mut description) "variable declaration inspired by LISP")}}>Show Addon Description</button>
+</div>

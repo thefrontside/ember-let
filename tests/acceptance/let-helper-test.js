@@ -9,6 +9,8 @@ import { expect } from 'chai';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
 
+import emberVersionIs from 'ember-version-is';
+
 describe('Acceptance: let helper', function() {
   let application;
 
@@ -59,4 +61,69 @@ describe('Acceptance: let helper', function() {
       });
     });
   });
+
+  if (emberVersionIs('greaterThan', "2.0.0")) {
+    describe('inline', () => {
+
+      it('works', () => {
+        andThen(() => {
+          expect(find('.inline-use').text()).to.equal("hello ");
+        });
+
+        click('button:contains(Greet the world)');
+
+        andThen(() => {
+          expect(find('.inline-use').text()).to.equal("hello world");
+        });
+      });
+
+      it('respects scoping rules', () => {
+        andThen(() => {
+
+          let result = find('.inline-scoping li').map(function() {
+            return $(this).text().trim();
+          }).toArray();
+
+          expect(result).to.deep.equal([
+            'num = 0',
+            'num = 1',
+            'num = 2',
+            'num = 3',
+            'num = 0'
+          ]);
+        });
+      });
+
+      it('scopes to outmost scope', () => {
+        andThen(() => {
+
+          let result = find('.inline-hoisting li').map(function() {
+            return $(this).text().trim();
+          }).toArray();
+          
+          expect(result).to.deep.equal([
+            '0',
+            '1',
+            '2',
+            '3',
+            '0'
+          ]);
+        });
+      });
+
+      it('supports multipe binding', function(){
+        andThen(() => {
+          expect($('.inline-multiple-binding .result').text()).to.equal('ember-let ');
+        });
+      
+        click('button:contains(Show Addon Description)');
+
+        andThen(() => {
+          expect($('.inline-multiple-binding .result').text()).to.equal('ember-let variable declaration inspired by LISP');
+        });
+      });
+      
+    });
+  }
+
 });
