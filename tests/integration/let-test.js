@@ -7,10 +7,6 @@ import {
 import hbs from 'htmlbars-inline-precompile';
 import emberVersionIs from 'ember-version-is';
 
-import LetHelperInitializer from 'ember-let/initializers/register-let-helper';
-
-LetHelperInitializer.initialize();
-
 describeComponent('let', 'Integration: let helper', { 
   integration: true 
 },

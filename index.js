@@ -19,5 +19,9 @@ module.exports = {
       name: 'inline-let',
       plugin: require('./lib/inline-let-transform')
     });
+  },
+
+  included: function(app) {
+    app.import('vendor/ember-let/register.js');
   }
 };
