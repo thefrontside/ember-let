@@ -41,6 +41,19 @@ Note: requires Ember 2.0+ (ie. does not support 1.13)
 {{greeting}} - <button {{action (action (mut to) "world")}}>Greet the world!</button>  
 ```
 
+Inline let declarations are in scope until the parent element or block is closed, for example:
+
+```
+{{#if person.isActive}}
+  <div>
+    {{let name person.name}}
+    <span>{{name}}</span>
+  </div>
+  {{!-- The name binding is not accessible here... --}}
+{{/if}}
+{{!-- ...or here. -- }}
+```
+
 ## Installation
 
 * `git clone` this repository
