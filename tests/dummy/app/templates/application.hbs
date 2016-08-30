@@ -49,27 +49,3 @@
     <li>num = {{num}}</li>
   </ul>
 </div>
-
-<h3>Inline `let` hoists to outmost scope</h3>
-<div class="inline-hoisting">
-  <ul>
-  {{#with (array 1 2 3) as |numbers|}}
-    {{let zero 0}}
-    <li>{{zero}}</li>
-    {{#each numbers as |num|}}
-      <li>{{num}}</li>
-    {{/each}}
-  {{/with}}
-    <li>{{zero}}</li>  
-  </ul>
-</div>
-
-<h3>Inline `let` supports multipe binding</h3>
-<div class="inline-multiple-binding">
-  {{let framework "ember"
-        helper "let"
-        addon (concat framework "-" helper " " description)
-  }}
-  <span class="result">{{addon}}</span>
-  <button {{action (action (mut description) "variable declaration inspired by LISP")}}>Show Addon Description</button>
-</div>

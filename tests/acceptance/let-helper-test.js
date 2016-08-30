@@ -92,36 +92,6 @@ describe('Acceptance: let helper', function() {
         ]);
       });
 
-      it('scopes to outmost scope', function() {
-        let result = find('.inline-hoisting li').map(function() {
-          return $(this).text().trim();
-        }).toArray();
-
-        expect(result).to.deep.equal([
-          '0',
-          '1',
-          '2',
-          '3',
-          '0'
-        ]);
-      });
-
-      describe('multiple binding', function(){
-        it('works', function() {
-          expect($('.inline-multiple-binding .result').text()).to.equal('ember-let ');
-        });
-
-        describe('triggering a recomputation', function() {
-          beforeEach(function() {
-            click('button:contains(Show Addon Description)');
-          });
-
-          it('recomputes all bound values', function() {
-            expect($('.inline-multiple-binding .result').text()).to.equal('ember-let variable declaration inspired by LISP');
-          });
-        });
-      });
-
     });
   }
 
