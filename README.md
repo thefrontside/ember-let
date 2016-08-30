@@ -37,7 +37,7 @@ See examples below:
 Note: requires Ember 2.0+ (ie. does not support 1.13)
 
 ```hbs
-{{let greeting (concat "hello " to)}}
+{{let greeting=(concat "hello " to)}}
 {{greeting}} - <button {{action (action (mut to) "world")}}>Greet the world!</button>  
 ```
 
@@ -46,7 +46,7 @@ Inline let declarations are in scope until the parent element or block is closed
 ```
 {{#if person.isActive}}
   <div>
-    {{let name person.name}}
+    {{let name=person.name}}
     <span>{{name}}</span>
   </div>
   {{!-- The name binding is not accessible here... --}}
