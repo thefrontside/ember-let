@@ -22,7 +22,7 @@ describeComponent('let', 'Integration: let helper', {
 
     it('does not mutate the context', function(){
       this.set('name', 'Alice');
-      this.render(hbs`{{let name "Bob"}}`);
+      this.render(hbs`{{let name="Bob"}}`);
       expect(this.get('name')).to.eq('Alice');
     });
 
@@ -31,7 +31,7 @@ describeComponent('let', 'Integration: let helper', {
       this.render(hbs`
         <span class="before">{{type}}</span>
         {{#each pets as |pet|}}
-          {{let type pet.type}}
+          {{let type=pet.type}}
           <span class="item">{{type}}</span>
         {{/each}}
         <span class="after">{{type}}</span>
@@ -45,9 +45,9 @@ describeComponent('let', 'Integration: let helper', {
     it('creates bindings in parallel', function(){
       this.set('pets', [{ type: 'cat' }, { type: 'dog' }, { type: 'pig' }]);
       this.render(hbs`
-        {{let a 'a' b 'b'}}
+        {{let a='a' b='b'}}
         <span class="before">{{a}} {{b}}</span>
-        {{let a 'A' b 'B' c (concat a b)}}
+        {{let a='A' b='B' c=(concat a b)}}
         <span class="after">{{a}} {{b}} {{c}}</span>
       `);
 
