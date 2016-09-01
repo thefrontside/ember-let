@@ -22,7 +22,7 @@ module.exports = {
   },
 
   included: function(app) {
-    this._super.included(app);
+    this._super.included.apply(app, arguments);
     
     app.import('vendor/ember-let/register.js');
   }
