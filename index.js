@@ -22,6 +22,8 @@ module.exports = {
   },
 
   included: function(app) {
+    this._super.included(app);
+    
     app.import('vendor/ember-let/register.js');
   }
 };
