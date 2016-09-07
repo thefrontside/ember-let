@@ -43,7 +43,7 @@ Note: requires Ember 2.0+ (ie. does not support 1.13)
 
 Inline let declarations are in scope until the parent element or block is closed, for example:
 
-```
+```hbs
 {{#if person.isActive}}
   <div>
     {{let name=person.name}}
