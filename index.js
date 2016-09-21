@@ -17,13 +17,16 @@ module.exports = {
 
     registry.add('htmlbars-ast-plugin', {
       name: 'inline-let',
-      plugin: require('./lib/inline-let-transform')
+      plugin: require('./lib/inline-let-transform'),
+      baseDir: function() {
+        return __dirname;
+      }
     });
   },
 
   included: function(app) {
     this._super.included.apply(app, arguments);
-    
+
     app.import('vendor/ember-let/register.js');
   }
 };
