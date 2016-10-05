@@ -7,8 +7,6 @@ module.exports = {
   name: 'ember-let',
 
   setupPreprocessorRegistry: function(type, registry) {
-    this._super.included.apply(this, arguments);
-
     // Inline let is only supported in Ember 2.0 and up.
     var checker = new VersionChecker(this);
     if (checker.for('ember', 'bower').lt('2.0.0')) {
@@ -25,7 +23,7 @@ module.exports = {
   },
 
   included: function(app) {
-    this._super.included.apply(app, arguments);
+    this._super.included.apply(this, arguments);
 
     app.import('vendor/ember-let/register.js');
   }
