@@ -15,9 +15,23 @@
     }
 
     LetSyntax.prototype.compile = function LetSyntax_compile(dsl) {
-      dsl.block({ templates: this.templates, args: this.args }, function(dsl) {
-        dsl.evaluate('default');
-      });
+      var args = this.args;
+
+      // added just before 2.10.0 final in https://github.com/tildeio/glimmer/pull/349
+      if (args.blocks) {
+        var blocks = args.blocks;
+
+        dsl.putArgs(args);
+
+        dsl.block(null, function(dsl) {
+          dsl.evaluate('default', blocks.default);
+        });
+      } else {
+        // supports 2.9.0-beta.1 - 2.9.0.beta.5, 2.10.0-beta.1 - 2.10.0-beta.4
+        dsl.block({ templates: this.templates, args: args }, function(dsl) {
+          dsl.evaluate('default');
+        });
+      }
     };
 
     LetSyntax.create = function(environment, args, templates) {
@@ -38,4 +52,3 @@
   }
 
 })();
-
