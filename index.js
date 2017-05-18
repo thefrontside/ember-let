@@ -22,9 +22,9 @@ module.exports = {
     });
   },
 
-  included: function(app) {
-    this._super.included.apply(this, arguments);
-
-    app.import('vendor/ember-let/register.js');
+  contentFor: function(type) {
+    if (type === 'app-boot') {
+      return "require('ember-let/register');";
+    }
   }
 };
