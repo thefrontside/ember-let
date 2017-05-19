@@ -1,11 +1,12 @@
 ---
 language: node_js
 node_js:
-  - "4"
+  - "6"
 
 sudo: false
 
 cache:
+  yarn: true
   directories:
     - node_modules
 
@@ -25,12 +26,12 @@ matrix:
     - env: EMBER_TRY_SCENARIO=ember-canary
 
 before_install:
-  - npm config set spin false
-  - npm install -g bower
-  - npm install phantomjs-prebuilt
+  - npm install --no-spin -g yarn
+  - yarn global add bower
+  - yarn global add phantomjs-prebuilt
 
 install:
-  - npm install
+  - yarn install
   - bower install
 
 script:
