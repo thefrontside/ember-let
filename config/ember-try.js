@@ -16,6 +16,11 @@ module.exports = {
         resolutions: {
           'ember': '~1.13.0'
         }
+      },
+      npm: {
+        dependencies: {
+          "ember-hash-helper-polyfill": "0.1.1"
+        }
       }
     },
     {
@@ -27,38 +32,10 @@ module.exports = {
         resolutions: {
           'ember': '~2.0.0'
         }
-      }
-    },
-    {
-      name: 'ember-2.1',
-      bower: {
+      },
+      npm: {
         dependencies: {
-          'ember': '~2.1.0'
-        },
-        resolutions: {
-          'ember': '~2.1.0'
-        }
-      }
-    },
-    {
-      name: 'ember-2.2',
-      bower: {
-        dependencies: {
-          'ember': '~2.2.0'
-        },
-        resolutions: {
-          'ember': '~2.2.0'
-        }
-      }
-    },
-    {
-      name: 'ember-2.3',
-      bower: {
-        dependencies: {
-          'ember': '~2.3.0'
-        },
-        resolutions: {
-          'ember': '~2.3.0'
+          "ember-hash-helper-polyfill": "0.1.1"
         }
       }
     },
@@ -74,24 +51,24 @@ module.exports = {
       }
     },
     {
-      name: 'ember-2.5',
+      name: 'ember-2.8',
       bower: {
         dependencies: {
-          'ember': '~2.5.0'
+          'ember': '~2.8.0'
         },
         resolutions: {
-          'ember': '~2.5.0'
+          'ember': '~2.8.0'
         }
       }
     },
     {
-      name: 'ember-2.6',
+      name: 'ember-2.12',
       bower: {
         dependencies: {
-          'ember': '~2.6.0'
+          'ember': '~2.12.0'
         },
         resolutions: {
-          'ember': '~2.6.0'
+          'ember': '~2.12.0'
         }
       }
     },
