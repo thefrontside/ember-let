@@ -24,22 +24,6 @@ module.exports = {
       }
     },
     {
-      name: 'ember-2.0',
-      bower: {
-        dependencies: {
-          'ember': '~2.0.0'
-        },
-        resolutions: {
-          'ember': '~2.0.0'
-        }
-      },
-      npm: {
-        dependencies: {
-          "ember-hash-helper-polyfill": "0.1.1"
-        }
-      }
-    },
-    {
       name: 'ember-2.4',
       bower: {
         dependencies: {
