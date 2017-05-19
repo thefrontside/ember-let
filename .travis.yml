@@ -23,6 +23,7 @@ matrix:
     - env: EMBER_TRY_SCENARIO=ember-canary
 
 before_install:
+  - npm install --no-spin -g yarn
   - yarn global add bower
   - yarn global add phantomjs-prebuilt
 
