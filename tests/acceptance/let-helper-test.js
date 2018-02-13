@@ -5,6 +5,7 @@ import {
   beforeEach,
   afterEach
 } from 'mocha';
+import $ from 'jquery';
 import { expect } from 'chai';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';

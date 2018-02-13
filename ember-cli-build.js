@@ -1,9 +1,9 @@
-/*jshint node:true*/
-/* global require, module */
-var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+/* eslint-env node */
+const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
+    // Add options here
     trees: {
       // See https://github.com/ember-cli/ember-cli/issues/7505
       vendor: null
