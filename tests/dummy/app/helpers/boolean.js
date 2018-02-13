@@ -1,6 +1,5 @@
-import Ember from 'ember';
-
-const { set, get } = Ember;
+import { helper } from '@ember/component/helper';
+import { get, set } from '@ember/object';
 
 class BoolState {
   constructor(val) {
@@ -18,4 +17,4 @@ function boolean([initialValue = false]) {
   return new BoolState(initialValue);
 }
 
-export default Ember.Helper.helper(boolean);
+export default helper(boolean);

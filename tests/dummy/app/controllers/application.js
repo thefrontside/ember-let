@@ -1,9 +1,12 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { A } from '@ember/array';
 
-export default Ember.Controller.extend({
-  falseyValues: {
-    undef: undefined,
-    nullThing: null,
-    empty: [],
-  }
+let falseyValues = {
+  undef: undefined,
+  nullThing: null,
+  empty: A([])
+};
+
+export default Controller.extend({
+  falseyValues: falseyValues
 });
