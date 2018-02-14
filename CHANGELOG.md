@@ -1,5 +1,20 @@
 # Change Log
 
+## [v0.7.1](https://github.com/thefrontside/ember-let/tree/v0.7.1) (2018-02-14)
+[Full Changelog](https://github.com/thefrontside/ember-let/compare/v0.7.0...v0.7.1)
+
+**Fixed bugs:**
+
+- Failing build on CircleCI [\#46](https://github.com/thefrontside/ember-let/issues/46)
+
+**Closed issues:**
+
+- Fails with ember 2.15 due to @glimmer/runtime change [\#44](https://github.com/thefrontside/ember-let/issues/44)
+
+**Merged pull requests:**
+
+- Upgrade Ember-CLI to 2.18.x [\#48](https://github.com/thefrontside/ember-let/pull/48) ([Robdel12](https://github.com/Robdel12))
+
 ## [v0.7.0](https://github.com/thefrontside/ember-let/tree/v0.7.0) (2017-12-27)
 [Full Changelog](https://github.com/thefrontside/ember-let/compare/v0.6.0...v0.7.0)
 
