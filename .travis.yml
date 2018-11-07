@@ -3,7 +3,7 @@ language: node_js
 node_js:
   # we recommend testing addons with the same minimum supported node version as Ember CLI
   # so that your addon works for all apps
-  - "4"
+  - "6"
 
 sudo: false
 dist: trusty
@@ -11,8 +11,7 @@ dist: trusty
 addons:
   chrome: stable
 
-cache:
-  yarn: true
+cache: yarn
 
 env:
   global:
@@ -39,7 +38,7 @@ before_install:
   - export PATH=$HOME/.yarn/bin:$PATH
 
 install:
-  - yarn install --no-lockfile --non-interactive
+  - yarn
 
 script:
   - yarn lint:js
